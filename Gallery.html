@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Cebuano food, Boljoon restaurant, Filipino delicacies, local cuisine, Utan Bisaya, Lumpia, Adobo, Pancit, family restaurant, traditional cooking">
+<meta name="keyword" content="Boljoon Fish, Authentic Cebuano cuisine, warm dining, and affordable Filipino meals.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAME'S RESTAURANT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Poppins', sans-serif; overflow-x:hidden; background:linear-gradient(180deg,#fff4f0,#ffe6e6); color:#333; scroll-behavior:smooth; transition:background 0.4s,color 0.4s; }
+body.dark { background:#1b1b1b; color:#eee; }
+</style>
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:url("yeo.jpg") no-repeat center center fixed;background-size:cover;color:#3a3a3a;overflow-x:hidden;transition:background 0.4s,color 0.4s;padding-top:120px;}
+body.dark{background:#1b1b1b;color:#eee;}
+.header{width:100%;padding:15px 30px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);position:fixed;top:0;z-index:200;border-bottom:1px solid rgba(0,0,0,0.1);flex-wrap:wrap;box-shadow:0 4px 15px rgba(0,0,0,0.15);}
+.logo{font-size:28px;font-weight:700;color:#b71c1c;text-decoration:none;}
+.header-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.header-right a,.header-right button{text-decoration:none;padding:10px 16px;border-radius:12px;font-weight:600;cursor:pointer;transition:.3s;}
+.header-right a{background:#fff;color:#b71c1c;border:2px solid #b71c1c;}
+.header-right a:hover{background:#b71c1c;color:white;}
+.header-right button{border:none;background:#b71c1c;color:white;}
+.header-right button:hover{background:#7d0f0f;}
+
+.promo-menu{position:fixed;top:70px;width:100%;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);padding:10px 0;display:flex;justify-content:center;gap:15px;z-index:150;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+.promo-menu input{width:60%;padding:10px 16px;border-radius:12px;border:2px solid #b71c1c;outline:none;font-size:16px;transition:.3s;}
+.promo-menu input:focus{box-shadow:0 0 12px rgba(183,28,28,0.4);}
+.promo-menu button{padding:10px 16px;border-radius:12px;background:#b71c1c;color:white;border:none;font-weight:600;cursor:pointer;transition:.3s;}
+.promo-menu button:hover{background:#7d0f0f;}
+
+.hero-banner{width:90%;margin:20px auto 0;position:relative;border-radius:20px;overflow:hidden;animation:fadeIn 1.2s ease;}
+.hero-banner img{width:100%;height:360px;object-fit:cover;filter:brightness(70%);}
+.hero-banner-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:white;}
+.hero-banner-text h1{font-size:48px;font-weight:700;}
+.hero-banner-text p{font-size:18px;opacity:0.9;}
+
+.section-title{text-align:center;font-size:34px;font-weight:700;color:#b71c1c;margin:40px 0 20px;}
+
+.promo-grid{width:90%;margin:30px auto 60px;display:grid;grid-template-columns:repeat(auto-fit, minmax(280px,1fr));gap:30px;}
+.promo-card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,0.15);position:relative;transition:.3s;}
+.promo-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 15px 40px rgba(0,0,0,0.3);}
+.promo-card img{width:100%;height:220px;object-fit:cover;transition:.4s;}
+.promo-card:hover img{transform:scale(1.1);}
+.promo-info{padding:16px;text-align:center;}
+.promo-info h3{font-size:22px;font-weight:600;color:#b71c1c;}
+.old-price{text-decoration:line-through;color:gray;font-size:16px;}
+.new-price{font-size:22px;font-weight:700;color:#b71c1c;margin-top:5px;}
+.discount-tag{position:absolute;top:12px;right:12px;background:#ff3d3d;color:white;padding:8px 12px;font-weight:700;border-radius:8px;font-size:16px;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}
+.order-btn{margin-top:12px;padding:10px 16px;background:#b71c1c;color:white;border:none;border-radius:12px;font-weight:600;cursor:pointer;transition:.3s;}
+.order-btn:hover{background:#7d0f0f;}
+
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);justify-content:center;align-items:center;z-index:2000;}
+.modal-content{width:90%;max-width:480px;background:white;border-radius:20px;padding:20px;text-align:center;animation:pop 0.3s ease;position:relative;}
+.modal-content img{width:100%;border-radius:14px;}
+.close-btn{margin-top:12px;padding:10px 18px;background:#b71c1c;color:white;border-radius:12px;font-weight:600;cursor:pointer;}
+.close-btn:hover{background:#7d0f0f;}
+.countdown{font-weight:600;margin-top:8px;color:#7d0f0f;}
+
+#topBtn{position:fixed;bottom:25px;right:25px;padding:12px 18px;background:#b71c1c;color:white;border:none;border-radius:12px;cursor:pointer;display:none;z-index:1000;}
+#topBtn:hover{background:#7d0f0f;}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pop{from{transform:scale(0.5);opacity:0;}to{transform:scale(1);opacity:1);}}
+@media(max-width:768px){.promo-menu input{width:70%;}.hero-banner-text h1{font-size:36px;}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="MAIN ONE.html" class="logo">SAME'S RESTAURANT</a>
+  <div class="header-right">
+    <a href="MAIN ONE.html">Back to Home</a>
+    <button id="modeToggle">Dark Mode</button>
+  </div>
+</div>
+
+<div class="promo-menu">
+  <input type="text" id="searchInput" placeholder="Search promo...">
+  <button onclick="filterAll()">All</button>
+  <button onclick="filterType('soup')">Soup</button>
+  <button onclick="filterType('pork')">Pork</button>
+  <button onclick="filterType('fried')">Fried</button>
+  <button onclick="filterType('seafood')">Seafood</button>
+</div>
+
+<div class="hero-banner">
+  <img src="event.jpg" alt="Event Banner">
+  <div class="hero-banner-text">
+    <h1>🍽 PROMOS OF THE MONTH!</h1>
+    <p>Enjoy Boljoon's best foods at special discounted prices</p>
+  </div>
+</div>
+
+<h2 class="section-title">🔥 SPECIAL DEALS</h2>
+
+<div class="promo-grid" id="promoGrid"></div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <img id="modalImg" alt="">
+    <h2 id="modalName"></h2>
+    <p id="modalDesc"></p>
+    <p id="modalType" style="font-weight:600;color:#b71c1c;"></p>
+    <p class="countdown" id="modalCountdown"></p>
+    <div id="orderForm">
+      <input type="text" id="customerName" placeholder="Your Name">
+      <input type="number" id="customerQty" placeholder="Quantity">
+      <input type="email" id="customerEmail" placeholder="Email (optional)">
+      <button class="order-btn" onclick="orderNow()">Confirm Order</button>
+    </div>
+    <div class="close-btn" onclick="closeModal()">Close</div>
+  </div>
+</div>
+
+<button id="topBtn" onclick="scrollToTop()">Top</button>
+
+<script>
+const modeToggle=document.getElementById("modeToggle");
+modeToggle.onclick=()=>{
+  document.body.classList.toggle("dark");
+  modeToggle.textContent=document.body.classList.contains("dark")?"Light Mode":"Dark Mode";
+  localStorage.setItem('darkMode', document.body.classList.contains("dark"));
+};
+if(localStorage.getItem('darkMode')==='true'){document.body.classList.add('dark'); modeToggle.textContent="Light Mode";}
+
+const promos=[
+{name:"Nilat-an Chicken", img:"Nilatan.jpg", type:"soup", desc:"Warm ginger chicken soup loved in Cebu homes.", old:120,new:96,countdown:86400},
+{name:"Utan Bisaya", img:"Utanbisaya.jpg", type:"soup", desc:"Healthy vegetable soup commonly served in Cebu.", old:95,new:66,countdown:43200},
+{name:"Pork Chop", img:"Pork.jpg", type:"pork", desc:"Classic Cebu-style pork dish.", old:140,new:140,countdown:0},
+{name:"Giniling", img:"Giniling.jpg", type:"pork", desc:"Ground pork cooked with tomato sauce and vegetables.", old:110,new:88,countdown:21600},
+{name:"Inun-unan", img:"fish.jpg", type:"seafood", desc:"Vinegar-based fish stew.", old:130,new:110,countdown:7200},
+{name:"Bolabola", img:"bilat.jpg", type:"pork", desc:"Cebu’s Manor-style pork delicacy.", old:150,new:125,countdown:10800},
+{name:"Lumpia", img:"Lumpia.jpg", type:"fried", desc:"Crispy Cebu-style spring rolls.", old:90,new:68,countdown:3600},
+{name:"Humba", img:"Adobo.jpg", type:"pork", desc:"Savory Cebuano pork dish.", old:120,new:96,countdown:14400},
+{name:"Pancit", img:"Pancit.jpg", type:"fried", desc:"Cebu-style noodles.", old:100,new:85,countdown:0}];
+
+const promoGrid=document.getElementById("promoGrid");
+function displayPromos(list){
+  promoGrid.innerHTML="";
+  list.forEach(p=>{
+    const card=document.createElement("div");
+    card.className="promo-card";
+    card.innerHTML=`
+      <img src="${p.img}" alt="${p.name}">
+      <div class="discount-tag">${p.new<p.old ? "-"+Math.round((1-p.new/p.old)*100)+"%":p.countdown>0?"LIMITED":"BUY 1 TAKE 1"}</div>
+      <div class="promo-info">
+        <h3>${p.name}</h3>
+        <p class="old-price">₱${p.old}</p>
+        <p class="new-price">₱${p.new}</p>
+        <button class="order-btn" onclick="openModal(${promos.indexOf(p)})">Order Now</button>
+      </div>
+    `;
+    promoGrid.appendChild(card);
+  });
+}
+displayPromos(promos);
+
+document.getElementById("searchInput").addEventListener("input", e=>{
+  const q=e.target.value.toLowerCase();
+  const filtered=promos.filter(p=>p.name.toLowerCase().includes(q));
+  displayPromos(filtered);
+});
+
+function filterType(type){ displayPromos(promos.filter(p=>p.type===type)); }
+function filterAll(){ displayPromos(promos); }
+
+const modal=document.getElementById("modal");
+const modalImg=document.getElementById("modalImg");
+const modalName=document.getElementById("modalName");
+const modalDesc=document.getElementById("modalDesc");
+const modalType=document.getElementById("modalType");
+const modalCountdown=document.getElementById("modalCountdown");
+let countdownInterval;
+function openModal(index){
+  const p=promos[index];
+  modal.style.display="flex";
+  modalImg.src=p.img;
+  modalName.textContent=p.name;
+  modalDesc.textContent=p.desc;
+  modalType.textContent="Type: "+p.type.toUpperCase();
+  if(p.countdown>0) startCountdown(p.countdown);
+  else modalCountdown.textContent="";
+}
+function closeModal(){ modal.style.display="none"; clearInterval(countdownInterval); }
+
+function startCountdown(seconds){
+  clearInterval(countdownInterval);
+  function update(){
+    const d=Math.floor(seconds/86400);
+    const h=Math.floor((seconds%86400)/3600);
+    const m=Math.floor((seconds%3600)/60);
+    const s=seconds%60;
+    modalCountdown.textContent=`Time Left: ${d}d ${h}h ${m}m ${s}s`;
+    if(seconds<=0){ clearInterval(countdownInterval); modalCountdown.textContent="Deal Expired"; }
+    seconds--;
+  }
+  update();
+  countdownInterval=setInterval(update,1000);
+}
+
+function orderNow(){
+  const name=document.getElementById("customerName").value.trim();
+  const qty=document.getElementById("customerQty").value.trim();
+  const email=document.getElementById("customerEmail").value.trim();
+  if(!name||!qty){alert("Please enter your name and quantity."); return;}
+  alert(`Order placed!\nName: ${name}\nQuantity: ${qty}\nEmail: ${email||"N/A"}\nThank you for choosing SAME'S RESTAURANT 😎`);
+  closeModal();
+}
+
+const topBtn=document.getElementById("topBtn");
+window.onscroll=()=>{ topBtn.style.display=(window.scrollY>300)?"block":"none"; }
+function scrollToTop(){ window.scrollTo({top:0, behavior:"smooth"}); }
+</script>
+</body>
+</html>

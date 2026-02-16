@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tuboran Cafe</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;font-family:'Poppins',sans-serif;background:#0b0b0b;color:#fff;overflow-x:hidden}
+
+canvas#bgCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:-2;}
+
+header{
+  position:fixed;top:0;left:0;width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;
+  z-index:1200;border-bottom:1px solid rgba(255,255,255,0.06);
+  background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.25));
+  backdrop-filter:blur(8px);
+  background-image:url('header-bg.jpg');
+  background-size:cover;background-position:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.6)
+}
+header::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2));z-index:-1;
+}
+.logo{display:flex;align-items:center;gap:14px;cursor:pointer}
+.logo h1{font-size:1.9rem;color:gold;text-shadow:0 0 14px #ffb700;transform-style:preserve-3d;letter-spacing:1px}
+nav{display:flex;gap:20px}
+nav a{color:#fff;text-decoration:none;font-weight:600;font-size:0.95rem;position:relative;padding:6px 4px;opacity:0.98}
+nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:orange;transition:width .28s}
+nav a:hover::after{width:100%}
+
+/* Katong selfie box boi */
+.hero{
+  height:80vh;display:flex;align-items:center;justify-content:center;position:relative;padding-top:90px;
+  background-image:url('Yeo.jpg');background-size:cover;background-position:center;box-shadow:inset 0 0 120px rgba(0,0,0,0.6);
+  z-index:10;margin-bottom:30px;
+}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6));z-index:0}
+.hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px}
+.hero h2{font-size:3.2rem;color:gold;text-shadow:0 0 28px #ffb700;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* selfie box */
+.selfie-box{
+  margin-top:10px;background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);border-radius:16px;padding:18px 22px;display:flex;gap:14px;align-items:center;
+  box-shadow:0 12px 30px rgba(0,0,0,0.6);transform:translateY(0);transition:transform .35s;
+}
+.selfie-box:hover{transform:translateY(-6px)}
+.selfie-thumb{width:110px;height:72px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:inset 0 0 40px rgba(0,0,0,0.4)}
+.selfie-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.selfie-info{display:flex;flex-direction:column;gap:6px}
+.selfie-info h3{color:gold;font-size:1.1rem}
+.selfie-info p{font-size:.9rem;color:#ddd;max-width:360px}
+
+/* (auto scroll diri) */
+.highlights{display:flex;gap:18px;overflow-x:auto;padding:22px 50px;margin:26px 0 10px;scroll-behavior:smooth;z-index:10}
+.highlights::-webkit-scrollbar{height:8px}
+.highlights::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:8px}
+
+.highlight-card{flex:0 0 auto;width:260px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));overflow:hidden;cursor:pointer;transition:transform .35s,box-shadow .35s}
+.highlight-card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+.highlight-card img{width:100%;height:160px;object-fit:cover;display:block}
+.highlight-info{padding:12px;text-align:center}
+.highlight-info h4{color:gold}
+
+.categories{display:flex;justify-content:center;gap:14px;margin:18px 0;z-index:10}
+.cat-btn{padding:8px 18px;background:rgba(255,255,255,0.05);border-radius:999px;border:none;color:#fff;font-weight:600;cursor:pointer;transition:all .25s}
+.cat-btn.active,.cat-btn:hover{background:orange;color:#111;transform:scale(1.05)}
+
+.promo-section{padding:18px 50px 80px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;z-index:10}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:18px;overflow:hidden;cursor:pointer;position:relative;transform:translateY(40px) scale(.98);opacity:0;transition:transform .6s,opacity .6s,box-shadow .35s}
+.card:hover{transform:translateY(-8px) scale(1);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+.card img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .5s}
+.card:hover img{transform:scale(1.05)}
+.card-info{padding:16px;text-align:center;position:relative}
+.card-info h3{font-size:1.15rem;color:gold;margin-bottom:8px}
+.card-info p{font-size:.95rem;color:#ddd;margin-bottom:10px;min-height:42px}
+.card-info .price{color:orange;font-weight:700;font-size:1.1rem}
+.card-info .original{margin-left:8px;text-decoration:line-through;color:#bdbdbd;font-size:.95rem}
+.badge{position:absolute;top:14px;left:14px;background:gold;color:#111;padding:6px 12px;border-radius:999px;font-weight:700;animation:badgePulse 1.6s infinite}
+@keyframes badgePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);align-items:center;justify-content:center;z-index:2000}
+.modal-content{width:min(560px,92%);background:#0d0d0d;padding:20px;border-radius:14px;position:relative;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.7)}
+.modal-content img{width:100%;height:280px;object-fit:cover;border-radius:10px;margin-bottom:12px}
+.modal-content h2{color:gold;margin-bottom:6px}
+.modal-content p{color:#ddd}
+
+footer{padding:30px 20px;text-align:center;background:rgba(0,0,0,0.9);margin-top:30px}
+
+@media(max-width:900px){
+  header{padding:14px 18px}
+  .hero{height:62vh}
+  .highlight-card{width:200px}
+  .card img{height:160px}
+  .selfie-thumb{width:92px;height:62px}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<header>
+  <div class="logo" onclick="location.href='Landingpage.html'">
+    <h1>TUBORAN </h1>
+  </div>
+  <nav>
+    <a href="Landingpage.html">HOME</a>
+    <a href="Events.html">EVENTS</a>
+    <a href="Contact.html">CONTACT</a>
+    <a href="Product.html">PRODUCTS</a>
+  </nav>
+</header>
+
+<section class="hero" aria-label="Hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <h2>🔥At Low Cost!!!</h2>
+    <div class="selfie-box" id="selfieBox">
+      <div class="selfie-thumb"><img src="Hotdog.jpg" alt="selfie preview"></div>
+      <div class="selfie-info">
+        <h3>Take a selfie in our cafe</h3>
+        <p>Post with #TuboranSelfie to join monthly giveaways. Winner gets free drinks + discount vouchers.</p>
+      </div>
+      <button onclick="document.getElementById('promoSection').scrollIntoView({behavior:'smooth'})" style="margin-left:12px;padding:8px 14px;border-radius:12px;border:none;background:orange;color:#111;font-weight:700;cursor:pointer">See Promo</button>
+    </div>
+  </div>
+</section>
+
+<!-- Diri highlight boii (auto scroll) -->
+<div class="highlights" id="highlights">
+  <div class="highlight-card" data-target="Classic Milk Tea"><img src="A1.jpg" alt=""><div class="highlight-info"><h4>Classic Milk Tea</h4></div></div>
+  <div class="highlight-card" data-target="Honey Milk Tea"><img src="A1.jpg" alt=""><div class="highlight-info"><h4>Honey Milk Tea</h4></div></div>
+  <div class="highlight-card" data-target="Winter Frost"><img src="A2.jpg" alt=""><div class="highlight-info"><h4>Winter Frost</h4></div></div>
+  <div class="highlight-card" data-target="Caramel Bliss"><img src="A2.jpg" alt=""><div class="highlight-info"><h4>Caramel Bliss</h4></div></div>
+  <div class="highlight-card" data-target="Brown Sugar Latte"><img src="A1.jpg" alt=""><div class="highlight-info"><h4>Brown Sugar Latte</h4></div></div>
+  <div class="highlight-card" data-target="Matcha Latte"><img src="A1.jpg" alt=""><div class="highlight-info"><h4>Matcha Latte</h4></div></div>
+  <div class="highlight-card" data-target="Chocolate Dream"><img src="A2.jpg" alt=""><div class="highlight-info"><h4>Chocolate Dream</h4></div></div>
+  <div class="highlight-card" data-target="Strawberry Delight"><img src="A2.jpg" alt=""><div class="highlight-info"><h4>Strawberry Delight</h4></div></div>
+  <div class="highlight-card" data-target="Vanilla Cloud"><img src="A1.jpg" alt=""><div class="highlight-info"><h4>Vanilla Cloud</h4></div></div>
+</div>
+
+<div class="categories">
+  <button class="cat-btn active" data-cat="all">All</button>
+  <button class="cat-btn" data-cat="promo">Promo</button>
+  <button class="cat-btn" data-cat="limited">Limited</button>
+  <button class="cat-btn" data-cat="recommended">Recommended</button>
+</div>
+
+<!-- promo section bro -->
+<div id="promoSection" class="promo-section">
+
+  <div class="card" data-category="promo" data-title="Classic Milk Tea" data-price="₱175.00" data-original="₱220.00" data-desc="Rich and creamy with a hint of sweetness.">
+    <div class="badge">Promo</div>
+    <img src="A1.jpg" alt="Classic Milk Tea">
+    <div class="card-info">
+      <h3>Classic Milk Tea</h3>
+      <p></p>
+      <div><span class="price"></span><span class="original"></span></div>
+      <button onclick="openModalFromCard(event)">Order Now</button>
+    </div>
+  </div>
+
+  <div class="card" data-category="promo" data-title="Honey Milk Tea" data-price="₱190.00" data-original="₱240.00" data-desc="Sweet and smooth with natural honey flavor.">
+    <div class="badge">Promo</div>
+    <img src="A2.jpg" alt="Honey Milk Tea">
+    <div class="card-info">
+      <h3>Honey Milk Tea</h3>
+      <p></p>
+      <div><span class="price"></span><span class="original"></span></div>
+      <button onclick="openModalFromCard(event)">Order Now</button>
+    </div>
+  </div>
+
+  <div class="card" data-category="promo" data-title="Winter Frost" data-price="₱200.00" data-original="₱250.00" data-desc="Cool, creamy and refreshing for hot days.">
+    <div class="badge">Promo</div>
+    <img src="A1.jpg" alt="Winter Frost">
+    <div class="card-info">
+      <h3>Winter Frost</h3>
+      <p></p>
+      <div><span class="price"></span><span class="original"></span></div>
+      <button onclick="openModalFromCard(event)">Order Now</button>
+    </div>
+  </div>
+
+  <div class="card" data-category="limited" data-title="Caramel Bliss" data-price="₱210.00" data-original="₱260.00" data-desc="Smooth caramel flavor with creamy milk.">
+    <div class="badge">Limited</div>
+    <img src="A1.jpg" alt="Caramel Bliss">
+    <div class="card-info">
+      <h3>Caramel Bliss</h3>
+      <p></p>
+      <div><span class="price"></span><span class="original"></span></div>
+      <button onclick="openModalFromCard(event)">Order Now</button>
+    </div>
+  </div>
+
+  <div class="card" data-category="limited" data-title="Brown Sugar Latte" data-price="₱225.00" data-original="₱275.00" data-desc="Rich flavor with smooth brown sugar.">
+    <div class="badge">Limited</div>
+    <img src="A1.jpg" alt="Brown Sugar Latte">
+    <div class="card-info">
+      <h3>Brown Sugar Latte</h3>
+      <p></p>
+      <div><span class="price"></span><span class="original"></span></div>
+      <button onclick="openModalFromCard(event)">Order Now</button>
+    </div>
+  </div>
+
+  <div class="card" data-category="limited" data-title="Matcha Latte" data-price="₱235.00" data-original="₱285.00" data-desc="Green tea and milk blended perfectly.">
+    <div class="badge">Limited</div>
+    <img src="A2.jpg" alt="Matcha Latte">
+    <div class="card-info">
+      <h3>Matcha Latte</h3>
+      <p></p>
+      <div><span class="price"></span><span class="original"></span></div>
+      <button onclick="openModalFromCard(event)">Order Now</button>
+    </div>
+  </div>
+
+  <div class="card" data-category="recommended" data-title="Chocolate Dream" data-price="₱180.00" data-original="₱230.00" data-desc="Perfect for chocolate lovers.">
+    <div class="badge">Recommended</div>
+    <img src="A2.jpg" alt="Chocolate Dream">
+    <div class="card-info">
+      <h3>Chocolate Dream</h3>
+      <p></p>
+      <div><span class="price"></span><span class="original"></span></div>
+      <button onclick="openModalFromCard(event)">Order Now</button>
+    </div>
+  </div>
+
+  <div class="card" data-category="recommended" data-title="Strawberry Delight" data-price="₱185.00" data-original="₱235.00" data-desc="Fresh strawberry flavor with milk.">
+    <div class="badge">Recommended</div>
+    <img src="A1.jpg" alt="Strawberry Delight">
+    <div class="card-info">
+      <h3>Strawberry Delight</h3>
+      <p></p>
+      <div><span class="price"></span><span class="original"></span></div>
+      <button onclick="openModalFromCard(event)">Order Now</button>
+    </div>
+  </div>
+
+  <div class="card" data-category="recommended" data-title="Vanilla Cloud" data-price="₱195.00" data-original="₱245.00" data-desc="Smooth vanilla taste for creamy lovers.">
+    <div class="badge">Recommended</div>
+    <img src="A1.jpg" alt="Vanilla Cloud">
+    <div class="card-info">
+      <h3>Vanilla Cloud</h3>
+      <p></p>
+      <div><span class="price"></span><span class="original"></span></div>
+      <button onclick="openModalFromCard(event)">Order Now</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2025 Tuboran Cafe</p>
+  <p><a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">TikTok</a></p>
+</footer>
+
+<div class="modal" id="promoModal" role="dialog" aria-modal="true">
+  <div class="modal-content">
+    <button style="position:absolute;top:10px;right:12px;background:transparent;border:none;font-size:22px;color:#fff;cursor:pointer" onclick="closeModal()">×</button>
+    <img id="modalImg" src="Hotdog.jpg" alt="Hotdog.jpg">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+    <p><span id="modalPrice" style="color:orange;font-weight:700"></span> <span id="modalOriginal" style="text-decoration:line-through;color:#bdbdbd;margin-left:10px"></span></p>
+    <button onclick="alert('Order Placed!')" style="padding:10px 16px;border-radius:10px;border:none;background:orange;color:#111;font-weight:700;cursor:pointer">Order Now</button>
+  </div>
+</div>
+
+<script>
+/* Edit price: change each card's data-price attribute.
+   Edit description: change each card's data-desc attribute. */
+
+document.addEventListener('DOMContentLoaded',()=>{
+
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const highlights = document.getElementById('highlights');
+  const catBtns = Array.from(document.querySelectorAll('.cat-btn'));
+
+  // populate text from data attributes (price & description)
+  cards.forEach(card=>{
+    const priceEl = card.querySelector('.price');
+    const origEl = card.querySelector('.original');
+    const descEl = card.querySelector('.card-info p');
+    priceEl.textContent = card.dataset.price || '';
+    origEl.textContent = card.dataset.original || '';
+    descEl.textContent = card.dataset.desc || '';
+  });
+
+  // IntersectionObserver for entrance animation
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.transform='translateY(0) scale(1)';
+        e.target.style.opacity='1';
+      }
+    });
+  },{threshold:0.18});
+  cards.forEach(c=>obs.observe(c));
+
+  // category filtering
+  catBtns.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      catBtns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      cards.forEach(card=>{
+        if(cat==='all' || card.dataset.category===cat){
+          card.style.display='block';
+          setTimeout(()=>{card.style.transform='translateY(0) scale(1)';card.style.opacity='1'},60);
+        } else {
+          card.style.transform='translateY(40px) scale(.98)';card.style.opacity='0';
+          setTimeout(()=>{card.style.display='none'},260);
+        }
+      });
+    });
+  });
+
+  // open modal from card button (prevents event bubbling to card)
+  window.openModalFromCard = function(e){
+    e.stopPropagation();
+    const card = e.currentTarget.closest('.card');
+    if(card) openModal(card);
+  };
+
+  // clicking card also opens modal
+  cards.forEach(card=>{
+    card.addEventListener('click', ()=> openModal(card));
+  });
+
+  function openModal(card){
+    const modal = document.getElementById('promoModal');
+    const img = document.getElementById('modalImg');
+    const title = document.getElementById('modalTitle');
+    const desc = document.getElementById('modalDesc');
+    const price = document.getElementById('modalPrice');
+    const original = document.getElementById('modalOriginal');
+
+    img.src = card.querySelector('img').src;
+    title.textContent = card.dataset.title || card.querySelector('h3').innerText;
+    desc.textContent = card.dataset.desc || card.querySelector('.card-info p').innerText;
+    price.textContent = card.dataset.price || '';
+    original.textContent = card.dataset.original || '';
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  window.closeModal = function(){
+    document.getElementById('promoModal').style.display = 'none';
+    document.body.style.overflow = '';
+  };
+
+  const highlightCards = Array.from(document.querySelectorAll('.highlight-card'));
+  highlightCards.forEach(h=>{
+    h.addEventListener('click', ()=>{
+      const targetName = h.dataset.target;
+      const found = cards.find(c => (c.dataset.title || c.querySelector('h3').innerText).trim() === targetName.trim());
+      if(found){
+        found.scrollIntoView({behavior:'smooth',block:'center'});
+        found.style.boxShadow = '0 28px 60px rgba(255,160,40,0.14)';
+        setTimeout(()=>{found.style.boxShadow=''},800);
+      }
+    });
+  });
+
+  // auto scroll highlights (looping)
+  let autoScrollInterval = null;
+  function startAutoScroll(){
+    const container = highlights;
+    const speed = 1; //each 1 is 16ms bro kakalibog yawa
+    autoScrollInterval = setInterval(()=>{
+      if(container.scrollWidth - container.clientWidth - container.scrollLeft <= 1){
+        container.scrollTo({left:0,behavior:'smooth'});
+      } else {
+        container.scrollLeft += speed;
+      }
+    },16);
+  }
+  function stopAutoScroll(){
+    clearInterval(autoScrollInterval);
+    autoScrollInterval = null;
+  }
+
+  highlights.addEventListener('mouseenter', stopAutoScroll);
+  highlights.addEventListener('mouseleave', startAutoScroll);
+  startAutoScroll();
+
+  // bubble background animation
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+  function resizeCanvas(){canvas.width = window.innerWidth; canvas.height = window.innerHeight}
+  resizeCanvas();
+  window.addEventListener('resize',resizeCanvas);
+  const bubbles = [];
+  class Bubble{
+    constructor(){ this.x = Math.random()*canvas.width; this.y = canvas.height + Math.random()*300; this.r = Math.random()*10+4; this.v = Math.random()*1.1+0.3; this.a = Math.random()*0.4+0.15; }
+    draw(){ ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fillStyle = `rgba(255,255,255,${this.a})`; ctx.fill(); ctx.closePath(); }
+    update(){ this.y -= this.v; if(this.y < -30){ this.y = canvas.height + 20; this.x = Math.random()*canvas.width } this.draw(); }
+  }
+  for(let i=0;i<110;i++) bubbles.push(new Bubble());
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    bubbles.forEach(b=>b.update());
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // fix potential overlap: ensure header height reserved so content doesn't go under it hell yeaaaaa
+  const header = document.querySelector('header');
+  const headerHeight = header.getBoundingClientRect().height;
+  document.body.style.paddingTop = (headerHeight + 6) + 'px';
+
+});
+</script>
+</body>
+</html>

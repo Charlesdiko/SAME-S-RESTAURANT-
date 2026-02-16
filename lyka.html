@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JASSY SARI-SARI STORE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins, sans-serif;}
+body{
+background:url("PIC12.jpg") no-repeat center center fixed;
+background-size:cover;
+overflow-x:hidden;
+}
+.overlay{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(3px);
+z-index:-1;
+}
+.header{
+width:100%;
+padding:40px 0 50px 0;
+text-align:center;
+color:white;
+text-shadow:0 0 18px rgba(255,255,255,0.9);
+}
+.header h1{
+font-size:85px;
+font-weight:900;
+letter-spacing:3px;
+animation:fadein 1.5s ease forwards;
+}
+.header h2{
+font-size:26px;
+margin-top:10px;
+opacity:0.8;
+animation:fadeup 1.5s ease forwards;
+}zzz
+@keyframes fadein{0%{opacity:0;transform:scale(0.7);}100%{opacity:1;transform:scale(1);}}
+@keyframes fadeup{0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
+
+.navbar{
+width:100%;
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:25px;
+}
+.navbar a{
+font-size:30px;
+color:white;
+text-decoration:none;
+position:relative;
+font-weight:600;
+padding-bottom:6px;
+transition:0.3s;
+}
+.navbar a::after{
+content:"";
+position:absolute;
+bottom:0;left:0;
+width:0%;
+height:3px;
+background:white;
+transition:0.35s;
+}
+.navbar a:hover::after{width:100%;}
+.navbar a:hover{transform:scale(1.12);}
+
+.section{
+width:100%;
+margin-top:70px;
+display:flex;
+justify-content:center;
+gap:80px;
+padding:20px;
+flex-wrap:wrap;
+}
+
+.cardtitle{
+font-size:45px;
+font-weight:900;
+color:white;
+text-align:center;
+width:100%;
+letter-spacing:2px;
+margin-bottom:20px;
+text-shadow:0 0 12px black;
+}
+
+.imgbox{
+width:330px;
+height:330px;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 0 25px rgba(0,0,0,0.8);
+position:relative;
+cursor:pointer;
+transition:0.4s;
+}
+.imgbox img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.4s;
+}
+.imgbox:hover{
+transform:scale(1.08);
+filter:brightness(1.12);
+}
+.imgbox:hover img{
+transform:scale(1.15);
+}
+
+.btnset{
+display:flex;
+justify-content:center;
+gap:30px;
+width:100%;
+margin-top:40px;
+}
+.btnset a{
+font-size:20px;
+padding:14px 35px;
+border-radius:50px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(4px);
+color:white;
+text-decoration:none;
+font-weight:600;
+letter-spacing:1px;
+transition:0.3s;
+border:2px solid rgba(255,255,255,0.3);
+}
+.btnset a:hover{
+transform:scale(1.15);
+background:white;
+color:black;
+border-color:white;
+}
+
+.infobox{
+position:fixed;
+bottom:25px;
+right:25px;
+padding:18px 28px;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(6px);
+border-radius:14px;
+color:white;
+font-size:17px;
+font-weight:600;
+letter-spacing:1px;
+box-shadow:0 0 15px rgba(255,255,255,0.4);
+animation:float 3s ease-in-out infinite;
+}
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-8px);}
+100%{transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="header">
+<h1>JASSY SARI-SARI STORE</h1>
+<h2>Small store, big dreams!</h2>
+</div>
+
+<div class="navbar">
+<a href="HOME1.html">HOME</a>
+<a href="EVENT1.html">EVENT</a>
+<a href="Contactus.html">CONTACT</a>
+<a href="Products.html">PRODUCTS</a>
+</div>
+
+<div class="section">
+<div class="cardtitle">MULTITUDINOUS</div>
+
+<div class="imgbox">
+<img src="PIC6.jpg">
+</div>
+
+<div class="imgbox">
+<img src="PIC3.jpg">
+</div>
+</div>
+
+<div class="infobox">Welcome to the Store.</div>
+</body>
+</html>

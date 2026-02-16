@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Cebuano food, Boljoon restaurant, Filipino delicacies, local cuisine, Utan Bisaya, Lumpia, Adobo, Pancit, family restaurant, traditional cooking">
+<meta name="keyword" content="Boljoon Dish, Authentic Cebuano cuisine, warm dining, and affordable Filipino meals.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAME'S RESTAURANT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Poppins', sans-serif; overflow-x:hidden; background:linear-gradient(180deg,#fff4f0,#ffe6e6); color:#333; scroll-behavior:smooth; transition:background 0.4s,color 0.4s; }
+body.dark { background:#1b1b1b; color:#eee; }
+</style>
+</head>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html, body{height:100%;overflow-x:hidden;font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial;}
+:root{
+  --gold:#d4af37;
+  --deep:#2f1f14;
+  --muted:#5a3f2a;
+  --accent:rgba(212,175,55,0.35);
+}
+body{
+  background:url('yt.jpg') center/cover fixed no-repeat;
+  color:var(--deep);
+  transition:background-position 0.2s ease-out;
+}
+body.scrolled{background-position:center calc(50% + 40px);}
+header{
+  position:fixed;top:0;left:50%;transform:translateX(-50%);
+  width:100%;max-width:1400px;padding:20px 16px;
+  display:flex;justify-content:center;
+  backdrop-filter:blur(14px) saturate(160%);
+  background:rgba(0,0,0,0.45);border-bottom:1px solid rgba(255,255,255,0.08);
+  transition:all .35s ease;z-index:9999;
+}
+header.shrink{padding:10px 16px;background:rgba(0,0,0,0.6);backdrop-filter:blur(18px) saturate(180%);}
+.logo{
+  position:absolute;left:22px;top:14px;font-family:'Playfair Display',serif;color:#fffbe8;
+  font-size:1.3rem;font-weight:700;padding:8px 14px;border-radius:10px;
+  background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.05);
+  cursor:pointer;transition:transform .3s,box-shadow .3s;
+}
+.logo:hover{transform:scale(1.05);box-shadow:0 0 16px rgba(212,175,55,0.35);}
+.nav-container{display:flex;gap:46px;align-items:center;}
+.nav-container a{
+  text-decoration:none;font-weight:700;text-transform:uppercase;color:var(--gold);
+  letter-spacing:1.6px;font-size:clamp(16px,1.5vw,22px);position:relative;transition:.3s;
+}
+.nav-container a:hover{color:#fff;}
+
+#hero{
+  margin-top:110px;padding:60px 6%;display:flex;justify-content:center;
+}
+.hero-card{
+  max-width:1100px;width:96%;display:grid;grid-template-columns:1fr 400px;gap:30px;
+  background:rgba(255,255,255,0.07);padding:30px;border-radius:26px;
+  backdrop-filter:blur(14px);box-shadow:0 35px 90px rgba(0,0,0,0.55);transition:.4s ease;
+}
+.hero-title{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;margin-bottom:12px;text-align:center;}
+.hero-sub{color:#eee;line-height:1.65;text-align:center;}
+.hero-plate{height:350px;border-radius:16px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.5);}
+.hero-plate img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease;}
+.hero-plate:hover img{transform:scale(1.15);}
+
+.menu-grid {
+  max-width: 1100px;
+  margin: 60px auto;
+  display: grid;
+  gap: 30px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+
+.card{
+  background:rgba(255,255,255,0.08);border:1.5px solid rgba(212,175,55,0.28);
+  border-radius:18px;padding:18px;transform:translateY(40px);opacity:0;
+  transition:.8s cubic-bezier(.2,.9,.3,1);cursor:pointer;
+  backdrop-filter:blur(6px);position:relative;overflow:hidden;
+}
+.card.show{transform:none;opacity:1;}
+.card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.45);}
+.card img{border-radius:14px;transition:transform .5s;width:100%;height:280px;object-fit:cover;}
+.card:hover img{transform:scale(1.08);}
+.card h3{text-align:center;font-size:1.6rem;color:var(--gold);margin-top:12px;}
+.card::after{
+  content:'';
+  position:absolute;top:0;left:-75%;width:50%;height:100%;
+  background:linear-gradient(120deg,rgba(255,255,255,0.2),rgba(255,255,255,0.05),rgba(255,255,255,0.2));
+  transform:skewX(-25deg);
+  transition:all 0.7s;
+}
+.card:hover::after{left:125%;}
+
+#slidePanel{
+  position:fixed;top:0;right:-100%;width:400px;height:100%;
+  background:rgba(255,255,255,0.08);backdrop-filter:blur(18px);
+  box-shadow:-10px 0 50px rgba(0,0,0,0.6);z-index:99999;
+  transition:right 0.5s ease;
+  display:flex;flex-direction:column;overflow-y:auto;padding-bottom:40px;
+}
+#slidePanel.active{right:0;}
+#slidePanel h2{text-align:center;color:var(--gold);margin:25px 0;font-size:1.8rem;}
+#slidePanel .description{padding:0 20px;margin-bottom:15px;color:#fff;line-height:1.6;}
+#slidePanel .feature{background:rgba(255,255,255,0.05);margin:8px 20px;padding:12px;border-radius:12px;border:1px solid var(--accent);color:#fff;}
+
+#slidePanel button{
+  align-self:center;margin:20px 0 40px 0;padding:12px 30px;border-radius:10px;border:1px solid var(--gold);
+  background:rgba(0,0,0,0.45);color:var(--gold);font-size:1rem;cursor:pointer;transition:.3s;
+}
+#slidePanel button:hover{background:rgba(0,0,0,0.6);}
+
+footer{padding:40px;background:#0006;color:#fff;text-align:center;}
+
+@media(max-width:1000px){.hero-card{grid-template-columns:1fr}}
+</style>
+</head>
+
+<body>
+<div class="logo" onclick="location.href='mainpage.html'">SAME'S RESTAURANT</div>
+<header id="header">
+  <nav class="nav-container">
+    <a href="Main one.html">Home</a>
+    <a href="Gallery.html">Event</a>
+    <a href="Contact.html">Contact Us</a>
+    <a href="Product.html">Products</a>
+  </nav>
+</header>
+
+<section id="hero">
+  <div class="hero-card">
+    <div>
+      <div class="hero-title">Authentic Cebuano Dishes</div>
+      <div class="hero-sub">Tradition with a luxurious twist. Landscape photography and high-contrast plating to elevate each feature.</div>
+    </div>
+    <div class="hero-plate">
+      <img src="yeo.jpg">
+    </div>
+  </div>
+</section>
+
+<section class="menu-grid">
+  <div class="card" onclick="openPanel('lumpia')"><img src="lumpia.jpg"><h3>Lumpia</h3></div>
+  <div class="card" onclick="openPanel('bolabola')"><img src="bilat.jpg"><h3>Bolabola</h3></div>
+  <div class="card" onclick="openPanel('nilatan')"><img src="nilatan.jpg"><h3>Nilat-an with Pork</h3></div>
+  <div class="card" onclick="openPanel('inununan')"><img src="Fish.jpg"><h3>Inun-unan</h3></div>
+</section>
+
+<div id="slidePanel">
+  <h2 id="panelTitle"></h2>
+  <div id="panelContent"></div>
+  <button onclick="closePanel()">Close</button>
+</div>
+
+<footer>© 2025 SAME'S RESTAURANT</footer>
+
+<script>
+const dishes = {
+  lumpia: {
+    title: "Lumpia",
+    description: "Lumpia is not only crispy and delicious, it also provides a balanced mix of protein and vitamins from the meat and fresh vegetables. Each bite supports energy and muscle growth while keeping it light enough for a snack or appetizer. It’s perfect for sharing, making gatherings more enjoyable, and brings the authentic taste of Filipino comfort food to every table.",
+    features: [
+      "Crispy exterior with soft, savory filling",
+      "Vegetable-packed: carrots, cabbage, and beansprouts",
+      "Protein-rich: pork, shrimp, or chicken options",
+      "Light yet satisfying snack for gatherings",
+      "Versatile: can be fried or served fresh"
+    ]
+  },
+  bolabola: {
+    title: "Bolabola",
+    description: "Bolabola delivers a delightful combination of chewy sticky rice and creamy coconut milk, giving you natural energy and a comforting sweetness. The dish provides healthy fats and sustenance, making it a satisfying dessert or afternoon snack. Enjoying Bolabola connects you to traditional Cebuano flavors and culture, perfect for sharing and creating memorable moments with family and friends.",
+    features: [
+      "Rive in Carbs",
+      "High in Protein",
+      "Rich in Zinc thats support our body needs",
+      "Good source of energy for the day"
+    ]
+  },
+  nilatan: {
+    title: "Nilat-an with Pork",
+    description: " Nilat-an is a hearty, protein-rich soup that nourishes both body and soul. The tender pork provides energy and satiety, while fresh vegetables supply essential vitamins and fiber. Its aromatic broth is comforting, making it ideal for family meals or cozy gatherings. Eating Nilat-an preserves authentic Cebuano culinary traditions while giving you a wholesome, satisfying experience.",
+    features: [
+      "Rich pork flavor with tender meat chunks",
+      "Loaded with fresh local vegetables",
+      "Authentic Cebuano recipe",
+      "Comforting and hearty soup",
+      "Healthy and nutritious traditional dish"
+    ]
+  },
+  inununan: {
+    title: "Inun-unan",
+    description: "Inun-unan offers a healthy and flavorful way to enjoy fish. Rich in Omega-3 fatty acids, it supports heart and brain health, while the light cooking method preserves natural nutrients. The tangy, aromatic flavor enhances the meal without heaviness, making it perfect with steamed rice. This traditional Bisaya dish highlights fresh, local ingredients and delivers a wholesome, satisfying dining experience.",
+    features: [
+      "Lightly cooked fish for fresh flavor",
+      "Tangy and aromatic with vinegar and ginger",
+      "Healthy source of Omega-3",
+      "Traditional Bisaya preparation",
+      "Perfect accompaniment to rice meals"
+    ]
+  }
+};
+
+function openPanel(dish){
+  document.getElementById('panelTitle').innerText = dishes[dish].title;
+  const content = document.getElementById('panelContent');
+  content.innerHTML = '';
+  
+  const desc = document.createElement('div');
+  desc.className = 'description';
+  desc.innerText = dishes[dish].description;
+  content.appendChild(desc);
+  
+  dishes[dish].features.forEach(f=>{
+    const div = document.createElement('div');
+    div.className = 'feature';
+    div.innerText = f;
+    content.appendChild(div);
+  });
+  
+  document.getElementById('slidePanel').classList.add('active');
+}
+
+function closePanel(){
+  document.getElementById('slidePanel').classList.remove('active');
+}
+
+const header = document.getElementById("header");
+window.addEventListener("scroll", ()=>{
+  header.classList.toggle("shrink", window.scrollY > 40);
+  document.body.classList.toggle("scrolled", window.scrollY > 40);
+});
+
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
+},{threshold:0.2});
+cards.forEach(c=>observer.observe(c));
+</script>
+</body>
+</html>

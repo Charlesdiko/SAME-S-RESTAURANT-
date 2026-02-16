@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Cebuano food, Boljoon restaurant, Filipino delicacies, local cuisine, Utan Bisaya, Lumpia, Adobo, Pancit, family restaurant, traditional cooking">
+<meta name="keyword" content="Boljoon Dish, Authentic Cebuano cuisine, warm dining, and affordable Filipino meals.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAME'S RESTAURANT</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Poppins', sans-serif; overflow-x:hidden; background:linear-gradient(180deg,#fff4f0,#ffe6e6); color:#333; scroll-behavior:smooth; transition:background 0.4s,color 0.4s; }
+body.dark { background:#1b1b1b; color:#eee; }
+</style>
+</head>
+
+  <style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Poppins', sans-serif; overflow-x:hidden; background:linear-gradient(180deg,#fff4f0,#ffe6e6); color:#333; scroll-behavior:smooth; transition:background 0.4s,color 0.4s; }
+body.dark { background:#1b1b1b; color:#eee; }
+
+.hero { position:relative; height:90vh; display:flex; justify-content:center; align-items:center; text-align:center; background-image:url('10.png'); background-size:cover; background-position:center; }
+.hero-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(183,28,28,0.5); z-index:1; }
+.hero-content { position:relative; z-index:2; animation:fadeInHero 1.5s forwards; }
+@keyframes fadeInHero { from { opacity:0; transform:translateY(-30px);} to { opacity:1; transform:translateY(0);} }
+.hero h1 { font-size:52px; margin-bottom:15px; text-shadow:0 0 15px rgba(0,0,0,0.3); }
+.hero p { font-size:22px; max-width:700px; margin:auto; line-height:1.4; }
+.nav-buttons { margin-top:25px; }
+.nav-buttons a { display:inline-block; padding:12px 28px; margin:10px; background:#b71c1c; color:white; font-weight:600; border-radius:10px; text-decoration:none; transition:all 0.3s; }
+.nav-buttons a:hover { background:#7d0f0f; transform:scale(1.05); }
+
+#modeToggle { position:fixed; top:20px; right:20px; background:#b71c1c; color:white; padding:10px 16px; border-radius:12px; cursor:pointer; z-index:100; }
+#modeToggle:hover { background:#7d0f0f; }
+
+.about { padding:80px 10%; background:#fff8f6; text-align:center; }
+body.dark .about { background:#2b2b2b; }
+.about h2 { font-size:36px; color:#b71c1c; margin-bottom:20px; }
+body.dark .about h2 { color:#ff6b6b; }
+.about p { font-size:20px; line-height:1.8; }
+
+.owner-section { display:flex; flex-wrap:wrap; align-items:center; padding:80px 10%; background:#fff0ee; }
+body.dark .owner-section { background:#2a2a2a; }
+.owner-photo { flex:1 1 300px; text-align:center; padding:20px; }
+.owner-photo img { width:100%; max-width:350px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.2); }
+.owner-info { flex:1 1 300px; padding:20px; margin-top:20px; }
+.owner-info h2 { font-size:32px; color:#b71c1c; margin-bottom:15px; }
+body.dark .owner-info h2 { color:#ff6b6b; }
+.owner-info .bio, .owner-info .traits { margin-bottom:15px; font-size:18px; line-height:1.6; }
+.owner-info .traits ul { list-style:none; padding-left:0; }
+.owner-info .traits ul li { position:relative; padding-left:24px; margin-bottom:10px; }
+.owner-info .traits ul li::before { content:"•"; position:absolute; left:0; color:#b71c1c; font-size:22px; line-height:0; }
+body.dark .owner-info .traits ul li::before { color:#ff6b6b; }
+
+.box { background:#ffffff; padding:25px; border-radius:15px; box-shadow:0 6px 25px rgba(0,0,0,0.15); margin-top:20px; transition:0.3s; }
+body.dark .box { background:#2e2e2e; box-shadow:0 6px 25px rgba(255,255,255,0.12); }
+.box:hover { transform:scale(1.03); }
+.box h3 { font-size:26px; color:#b71c1c; margin-bottom:10px; }
+body.dark .box h3 { color:#ff6b6b; }
+.box ul { list-style:none; padding-left:0; margin-top:10px; }
+.box ul li { margin-bottom:10px; font-size:18px; position:relative; padding-left:24px; }
+.box ul li::before { content:"•"; position:absolute; left:0; top:0; color:#b71c1c; font-size:22px; }
+body.dark .box ul li::before { color:#ff6b6b; }
+
+.carousel-container { position:relative; width:90%; margin:60px auto; overflow:hidden; }
+.carousel-track { display:flex; transition: transform 0.6s ease-in-out; }
+.food-card { min-width:220px; margin:0 10px; background:white; border-radius:18px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.2); cursor:pointer; flex-shrink:0; transition: transform 0.3s, box-shadow 0.3s; transform-style:preserve-3d; }
+body.dark .food-card { background:#2b2b2b; color:#eee; }
+.food-card img { width:100%; height:180px; object-fit:cover; transition: transform 0.4s; }
+.food-card:hover img { transform:scale(1.12); }
+.food-card:hover { transform:rotateY(10deg) scale(1.05); box-shadow:0 18px 40px rgba(0,0,0,0.35); }
+.food-card p { padding:12px; text-align:center; font-weight:600; color:#b71c1c; background:#fff8f6; }
+body.dark .food-card p { background:#3b3b3b; color:#ff6b6b; }
+
+.carousel-btn { position:absolute; top:50%; transform:translateY(-50%); background:#b71c1c; color:white; border:none; padding:12px 18px; border-radius:50%; cursor:pointer; font-size:24px; z-index:10; transition: background 0.3s; }
+.carousel-btn:hover { background:#7d0f0f; }
+.prev { left:10px; }
+.next { right:10px; }
+
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:2000; }
+.modal-content { background:white; padding:20px; border-radius:20px; width:90%; max-width:400px; text-align:center; animation:pop 0.3s ease; }
+@keyframes pop { from{ transform:scale(0.5); opacity:0;} to{ transform:scale(1); opacity:1;} }
+.modal-content img { width:100%; border-radius:14px; margin-bottom:15px; }
+.modal-content h2 { margin-bottom:10px; color:#b71c1c; }
+.modal-content p { font-size:16px; line-height:1.6; }
+.close-btn { margin-top:10px; padding:10px 20px; background:#b71c1c; color:white; font-weight:600; border-radius:14px; cursor:pointer; }
+
+.particle { position:fixed; width:12px; height:12px; background:#ff6b6b; border-radius:50%; opacity:0.6; animation: float 6s infinite ease-in-out; z-index:-1;}
+@keyframes float { 0% { transform:translateY(0); opacity:0.6;} 50% { transform:translateY(-40px); opacity:1;} 100% { transform:translateY(0); opacity:0.6;} }
+
+#topBtn { position:fixed; bottom:25px; right:25px; padding:12px 18px; background:#b71c1c; color:white; border:none; border-radius:12px; cursor:pointer; display:none; z-index:1000; }
+#topBtn:hover { background:#7d0f0f; }
+
+.owner-message { padding:80px 10%; background:#f7f7f7; display:flex; flex-direction:column; align-items:center; }
+.owner-box { max-width:700px; background:#ffffff; padding:40px; border-radius:18px; box-shadow:0 12px 30px rgba(0,0,0,0.12); text-align:center; margin-bottom:30px; }
+.owner-box h2 { font-size:30px; margin-bottom:20px; color:#333; }
+.owner-box p { font-size:18px; line-height:1.7; color:#555; margin-bottom:16px; }
+.owner-name { display:block; margin-top:20px; font-weight:600; color:#777; }
+
+.audio-box { background:#fff3f3; padding:25px; border-radius:15px; text-align:center; box-shadow:0 8px 25px rgba(0,0,0,0.15); max-width:600px; width:100%; transition:0.3s; }
+body.dark .audio-box { background: #3b3b3b; box-shadow: 0 8px 25px rgba(255,255,255,0.1); color: #eee; }
+.audio-box h3 { margin-bottom: 15px; color: #b71c1c; }
+.audio-box button { background: #b71c1c; color: white; border: none; padding: 12px 25px; border-radius: 12px; font-size: 16px; cursor: pointer; transition: all 0.3s; }
+.audio-box button:hover { background:#7d0f0f; transform: scale(1.05); }
+
+@media(max-width:768px){ .hero h1{ font-size:40px; } .hero p{ font-size:18px; } .owner-section{ flex-direction:column; text-align:center; } .owner-info{ padding:10px 0; } }
+</style>
+</head>
+<body>
+
+<div id="modeToggle">Dark Mode</div>
+
+<script>
+for(let i=0;i<15;i++){ let p=document.createElement("div"); p.className="particle"; p.style.left=Math.random()*100+"%"; p.style.top=Math.random()*100+"%"; p.style.animationDuration=(5+Math.random()*5)+"s"; document.body.appendChild(p); }
+</script>
+
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Welcome to SAME'S RESTAURANT</h1>
+    <p>Your corner for Cebu’s signature delicacies. Taste the culture, one bite at a time.</p>
+    <div class="nav-buttons">
+      <a href="#about">About Us</a>
+      <a href="#featured">Signature Foods</a>
+      <a href="MAIN ONE.html">Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <h2>About SAME'S RESTAURANT</h2>
+  <p>We serve authentic Cebu delicacies like Utan Bisaya, Bolabola, Lumpia, Adobo, and Pancit. Every dish is prepared with love, preserving the tradition and flavors of Cebuano cuisine.</p>
+</section>
+
+<section class="owner-section" id="owner">
+  <div class="owner-photo"><img src="She.jpg" alt="Owner"></div>
+  <div class="owner-info">
+    <h2>Meet the Owner</h2>
+    <div class="bio"><p>Lina Romero — born and raised in Boljoon, Cebu. From a young age she learned traditional Cebuano cooking from her grandmother. Her passion for local flavors and hospitality inspired her to open SAME'S RESTAURANT in 1995. Over the years she has built a warm, welcoming place where every guest feels like family.</p></div>
+    <div class="traits box">
+      <h3>About Her</h3>
+      <ul>
+        <li>Passionate about Cebuano cuisine & culture</li>
+        <li>Family-oriented and customer-focused</li>
+        <li>Committed to using fresh local ingredients</li>
+        <li>Friendly and welcoming vibe to every visitor</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="box">
+    <h2>History</h2>
+    <p>SAME'S RESTAURANT was established in 1995 by Lina Romero at 242 Nabor Derama St., Boljoon, Cebu. Lina blended her family’s original recipes with modern touches, allowing the restaurant to grow and attract more visitors. Today, it remains a proud Cebuano landmark.</p>
+  </div>
+</section>
+
+<section class="about">
+  <div class="box">
+    <h2>The Success</h2>
+    <p>Started as a small family food stall, the restaurant grew through consistency, care, and patience. Today, it serves locals, travelers, and students daily, standing as a recognized local food spot.</p>
+  </div>
+</section>
+
+<section class="about">
+  <div class="box">
+    <h2>The Challenges</h2>
+    <p>The owner faced limited tools, uncertain direction, and slow growth. Patience, steady improvement, and word-of-mouth helped the restaurant become a trusted local spot.</p>
+  </div>
+</section>
+
+<section class="about">
+  <div class="box">
+    <h2>10 Years Later</h2>
+    <p>After ten years, Same’s Restaurant remains warm and familiar. Early struggles became memories that shaped its growth. It grows through trust, consistency, and care, proving patience and small beginnings lead to meaningful success.</p>
+  </div>
+</section>
+
+<section class="about">
+  <div class="box">
+    <h2>Government Support</h2>
+    <p>Through proper registration, permits, seminars, and local initiatives, the Philippine government helped the business grow. Recognition and guidance gave the owner confidence to continue despite challenges.</p>
+  </div>
+</section>
+
+<section class="owner-message">
+  <div class="owner-box">
+    <h2>A Message from the Owner</h2>
+    <p>To everyone who walked through our doors, thank you for trusting us. Same’s Restaurant started with uncertainty, but your support gave it life. Every meal you shared here helped us grow, learn, and continue.</p>
+    <p>This place exists because of you. We promise to keep serving food made with care, honesty, and gratitude. Maayong Salamat!</p>
+    <span class="owner-name">— Lina Romero</span>
+  </div>
+  
+  <!-- Audio Box -->
+  <div class="audio-box">
+    <h3>Listen to Owner's Message</h3>
+    <button id="playAudioBtn">▶ Play Message</button>
+    <audio id="ownerAudio" preload="auto">
+      <source src="lina.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</section>
+
+<section class="featured" id="featured">
+  <div class="carousel-container">
+    <button class="carousel-btn prev">&#10094;</button>
+    <div class="carousel-track">
+      <div class="food-card" data-name="Utan Bisaya" data-desc="Healthy vegetable soup commonly served in Cebu." data-img="Utanbisaya.jpeg"><img src="Utanbisaya.jpg" alt="Utan Bisaya"><p>Utan Bisaya</p></div>
+      <div class="food-card" data-name="Bolabola" data-desc="Traditional Cebu delicacy, made with small crabs cooked in coconut milk." data-img="bilat.jpg"><img src="bilat.jpg" alt="Bolabola"><p>Bolabola</p></div>
+      <div class="food-card" data-name="Lumpia" data-desc="Crispy spring rolls filled with veggies and meat, Cebu style." data-img="lumpia.jpg"><img src="lumpia.jpg" alt="Lumpia"><p>Lumpia</p></div>
+      <div class="food-card" data-name="Adobo" data-desc="Classic Cebuano Adobo made with soy sauce, vinegar, and love." data-img="Adobo.jpg"><img src="Adobo.jpg" alt="Adobo"><p>Adobo</p></div>
+      <div class="food-card" data-name="Pancit" data-desc="Cebu-style stir-fried noodles, perfect for celebrations." data-img="pancit.jpg"><img src="pancit.jpg" alt="Pancit"><p>Pancit</p></div>
+    </div>
+    <button class="carousel-btn next">&#10095;</button>
+  </div>
+</section>
+
+<div class="modal" id="foodModal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <img id="modalImg" src="" alt="">
+    <h2 id="modalName"></h2>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<button id="topBtn" onclick="scrollToTop()">Top</button>
+
+<script>
+document.getElementById("modeToggle").onclick = () => {
+  document.body.classList.toggle("dark");
+}
+
+for(let i=0;i<15;i++){
+  let p=document.createElement("div");
+  p.className="particle";
+  p.style.left=Math.random()*100+"%";
+  p.style.top=Math.random()*100+"%";
+  p.style.animationDuration=(5+Math.random()*5)+"s";
+  document.body.appendChild(p);
+}
+
+const track = document.querySelector('.carousel-track');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+let index = 0;
+
+function updateCarousel() {
+  const cardWidth = document.querySelector('.food-card').offsetWidth + 20;
+  track.style.transform = `translateX(${-index*cardWidth}px)`;
+}
+
+prevBtn.addEventListener('click', () => {
+  index = (index > 0) ? index - 1 : track.children.length - 1;
+  updateCarousel();
+});
+
+nextBtn.addEventListener('click', () => {
+  index = (index < track.children.length - 1) ? index + 1 : 0;
+  updateCarousel();
+});
+
+setInterval(() => { nextBtn.click(); }, 3000);
+
+let startX = 0;
+track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+track.addEventListener('touchend', e => {
+  let endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) nextBtn.click();
+  else if (endX - startX > 50) prevBtn.click();
+});
+
+const foodCards = document.querySelectorAll('.food-card');
+const modal = document.getElementById('foodModal');
+const modalImg = document.getElementById('modalImg');
+const modalName = document.getElementById('modalName');
+const modalDesc = document.getElementById('modalDesc');
+const closeBtn = document.querySelector('.close-btn');
+
+foodCards.forEach(card => {
+  card.addEventListener('click', () => {
+    modal.style.display = 'flex';
+    modalImg.src = card.dataset.img;
+    modalName.textContent = card.dataset.name;
+    modalDesc.textContent = card.dataset.desc;
+  });
+});
+
+closeBtn.onclick = () => modal.style.display = 'none';
+window.onclick = e => { if(e.target === modal) modal.style.display = 'none'; }
+
+const topBtn = document.getElementById("topBtn");
+window.onscroll = () => {
+  if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
+    topBtn.style.display = "block";
+  } else {
+    topBtn.style.display = "none";
+  }
+}
+function scrollToTop(){
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+const audioBtn = document.getElementById('playAudioBtn');
+const ownerAudio = document.getElementById('ownerAudio');
+audioBtn.addEventListener('click', () => {
+  if(ownerAudio.paused){
+    ownerAudio.play();
+    audioBtn.textContent = "⏸ Pause Message";
+  } else {
+    ownerAudio.pause();
+    audioBtn.textContent = "▶ Play Message";
+  }
+});
+</script>
